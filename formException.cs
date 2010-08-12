@@ -64,9 +64,7 @@ namespace Hofstaedtler.Config
 
 				// get executing assembly
 				System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-				// temp msg string
-				String msg;
-
+				
 				// exception text, prefill with rtf header
 				String exT = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang3079{\\fonttbl{\\f0\\fswiss\\fcharset0 Arial;}}\n{\\colortbl ;\\red128\\green0\\blue0;}\n";
 
@@ -74,24 +72,6 @@ namespace Hofstaedtler.Config
 				String exT_template = "\\viewkind4\\uc1\\pard\\cf1\\b\\f0\\fs24 Occoured Exception: %exception% \\fs20\\par\n\\cf0\\b0\\par\n" + 
 					"Stack Trace: \\par\n%stacktrace%\n\\par\\par\n";
 
-				/*// replace template strings
-				msg = exT_ex;
-				if (myException.Message != null)
-					msg = msg.Replace("%exception%",myException.GetType().ToString() + ": " + myException.Message);
-				if (myException.StackTrace != null)
-					msg = msg.Replace("%stacktrace%",myException.StackTrace.Replace("\\","/").Replace("\n"," \\par\n"));
-				exT += msg;
-
-				// do we have an inner exception?
-				if (myException.InnerException != null)
-				{
-					msg = exT_ex;
-					if (myException.InnerException.Message != null)
-						msg = msg.Replace("%exception%",myException.InnerException.GetType().ToString() + ": " + myException.InnerException.Message);
-					if (myException.InnerException.StackTrace != null)
-						msg = msg.Replace("%stacktrace%",myException.InnerException.StackTrace.Replace("\\","/").Replace("\n"," \\par\n"));
-					exT += msg;
-				}*/
 				exT += makeExceptionString(myException, exT_template);
 
 				// add assembly version number
